@@ -1,0 +1,59 @@
+const User = require("../models/User");
+const asyncHandler = require("../utils/asyncHandler");
+const generateToken = require("../utils/generateToken");
+
+const str = (v) => (typeof v === "string" ? v.trim() : "");
+
+const fail = (res, status, message) => {
+  res.status(status);
+  throw new Error(message);
+};
+
+const publicUser = (u) => ({
+  _id: u._id,
+  name: u.name,
+  email: u.email,
+  role: u.role,
+});
+
+// POST /api/auth/register
+const register = asyncHandler(async (req, res) => {
+  const name = str(req.body.name);
+  const email = str(req.body.email).toLowerCase();
+  const password = typeof req.body.password === "string" ? req.body.password : "";
+  // Only student or instructor can be chosen on sign up. Admin is created from .env
+  const role = req.body.role === "instructor" ? "instructor" : "student";
+
+  if (name.length < 2) fail(res, 400, "Name must be at least 2 characters.");
+  if (!/^\S+@\S+\.\S+$/.test(email)) fail(res, 400, "Enter a valid email address.");
+  if (password.length < 6) fail(res, 400, "Password must be at least 6 characters.");
+
+  const exists = await User.findOne({ email });
+  if (exists) fail(res, 409, "An account with this email already exists.");
+
+  const user = await User.create({ name, email, password, role });
+
+  res.status(201).json({ token: generateToken(user._id), user: publicUser(user) });
+});
+
+// POST /api/auth/login
+const login = asyncHandler(async (req, res) => {
+  const email = str(req.body.email).toLowerCase();
+  const password = typeof req.body.password === "string" ? req.body.password : "";
+
+  if (!email || !password) fail(res, 400, "Please enter your email and password.");
+
+  const user = await User.findOne({ email }).select("+password");
+  if (!user || !(await user.matchPassword(password))) {
+    fail(res, 401, "Invalid email or password.");
+  }
+
+  res.json({ token: generateToken(user._id), user: publicUser(user) });
+});
+
+// GET /api/auth/me
+const getMe = asyncHandler(async (req, res) => {
+  res.json({ user: publicUser(req.user) });
+});
+
+module.exports = { register, login, getMe };
