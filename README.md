@@ -1,4 +1,4 @@
-# LearnSphere
+# Learnix
 
 A full-stack online learning platform where instructors publish courses, admins review them, and students learn through video lessons, quizzes and certificates.
 
