@@ -11,9 +11,11 @@ A full-stack online learning platform where instructors publish courses, admins 
 
 ## Tech Stack
 
-- **Frontend:** React, Vite, Tailwind CSS, React Router, Axios
-- **Backend:** Node.js, Express, Mongoose, JWT
-- **Database:** MongoDB
+| Layer    | Technologies                                    |
+| -------- | ----------------------------------------------- |
+| Frontend | React, Vite, Tailwind CSS, React Router, Axios  |
+| Backend  | Node.js, Express, Mongoose, JWT                 |
+| Database | MongoDB                                         |
 
 ## Getting Started
 
