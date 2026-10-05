@@ -2,7 +2,7 @@
 
 A full-stack online learning platform where instructors publish courses, admins review them, and students learn through video lessons, quizzes and certificates.
 
-## ✨ Features
+##  Features
 
 - **Students:** browse courses, enroll for free or pay via UPI, watch lessons with saved progress, take quizzes, earn a certificate, wishlist and review courses
 - **Instructors:** create courses with sections, lessons and quizzes, then submit for admin approval
