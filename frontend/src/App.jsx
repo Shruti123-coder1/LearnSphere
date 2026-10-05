@@ -10,6 +10,7 @@ import CourseDetails from "./pages/CourseDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
 
 import MyLearning from "./pages/MyLearning";
 import LessonPlayer from "./pages/LessonPlayer";
@@ -40,6 +41,10 @@ export default function App() {
             <Route path="courses/:id/quiz" element={<QuizPage />} />
             <Route path="payments" element={<Payment />} />
             <Route path="payment/:courseId" element={<Payment />} />
+          </Route>
+
+          <Route element={<ProtectedRoute roles={["student", "instructor", "admin"]} />}>
+            <Route path="profile" element={<Profile />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

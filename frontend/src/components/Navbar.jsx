@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { GraduationCap, Menu, X, ChevronDown, LogOut, LayoutDashboard } from "lucide-react";
+import { GraduationCap, Menu, X, ChevronDown, LogOut, LayoutDashboard, UserCircle } from "lucide-react";
 import Button from "./Button";
 import { useAuth, roleHome } from "../context/AuthContext";
 import { APP_NAME } from "../utils/constants";
@@ -100,6 +100,12 @@ export default function Navbar() {
                   >
                     <LayoutDashboard size={16} /> Go to dashboard
                   </Link>
+                  <Link
+                    to="/profile"
+                    className="flex items-center gap-2 px-4 py-2.5 text-sm hover:bg-stone-50"
+                  >
+                    <UserCircle size={16} /> My profile
+                  </Link>
                   <button
                     type="button"
                     onClick={handleLogout}
@@ -153,6 +159,12 @@ export default function Navbar() {
               <div className="mt-3 border-t border-stone-200 pt-3">
                 <p className="px-3 text-sm font-semibold">{user.name}</p>
                 <p className="px-3 text-xs capitalize text-stone-500">{user.role}</p>
+                <NavLink
+                  to="/profile"
+                  className="mt-2 block rounded-lg px-3 py-2.5 text-sm font-medium text-stone-700 hover:bg-stone-100"
+                >
+                  My profile
+                </NavLink>
                 <Button variant="outline" className="mt-3 w-full" onClick={handleLogout}>
                   <LogOut size={16} /> Log out
                 </Button>
