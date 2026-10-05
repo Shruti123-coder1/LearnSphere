@@ -49,8 +49,14 @@ export function AuthProvider({ children }) {
   const register = async (data) => saveSession(await registerUser(data));
   const logout = () => clearSession();
 
+  // Used by the Profile page after the name or email is changed
+  const updateUser = (u) => {
+    localStorage.setItem("ls_user", JSON.stringify(u));
+    setUser(u);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
