@@ -1,15 +1,15 @@
-# Learnix
+# 🎓 Learnix
 
 A full-stack online learning platform where instructors publish courses, admins review them, and students learn through video lessons, quizzes and certificates.
 
-## Features
+## ✨ Features
 
 - **Students:** browse courses, enroll for free or pay via UPI, watch lessons with saved progress, take quizzes, earn a certificate, wishlist and review courses
 - **Instructors:** create courses with sections, lessons and quizzes, then submit for admin approval
 - **Admins:** approve courses, verify payments, manage users and categories
 - **Security:** JWT authentication, role-based access, bcrypt password hashing
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Layer    | Technologies                                    |
 | -------- | ----------------------------------------------- |
@@ -17,7 +17,7 @@ A full-stack online learning platform where instructors publish courses, admins 
 | Backend  | Node.js, Express, Mongoose, JWT                 |
 | Database | MongoDB                                         |
 
-## Getting Started
+## 🚀 Getting Started
 
 **Prerequisites:** Node.js 18+ and MongoDB
 
